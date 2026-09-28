@@ -1,0 +1,58 @@
+/* Preloader Fixed Fullscreen Overlay */
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  background-color: var(--color-bg, #F3EBD7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  box-sizing: border-box;
+  pointer-events: auto;
+  user-select: none;
+  opacity: 1;
+  will-change: opacity, transform;
+}
+
+.preloader-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(240px, 46vw, 420px);
+  height: clamp(240px, 46vw, 420px);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.preloader-logo-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.preloader-logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: none;
+  will-change: opacity, transform, clip-path;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .preloader-logo-image {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: circle(100% at 50% 50%) !important;
+  }
+}

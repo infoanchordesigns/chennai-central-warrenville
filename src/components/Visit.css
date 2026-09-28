@@ -1,0 +1,611 @@
+/* Chennai Central Warrenville - Visit Us Section Styles */
+
+.visit-section {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-bg, #F3EBD7);
+  padding-block: clamp(4.5rem, 9vw, 8.5rem);
+  overflow-x: clip;
+}
+
+/* Header Area */
+.visit-header {
+  text-align: center;
+  max-width: 680px;
+  margin-inline: auto;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  padding-inline: 1rem;
+}
+
+.visit-eyebrow {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.visit-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.125rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.15;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+.visit-supporting-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  line-height: 1.6;
+  color: #6B3518;
+  margin: 0;
+}
+
+/* Main Grid Layout */
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .visit-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+/* LEFT COLUMN — MAP CARD */
+.visit-map-card {
+  position: relative;
+  width: 100%;
+  min-height: clamp(380px, 50vh, 560px);
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: #E8DFCD;
+  border: 1px solid rgba(36, 23, 15, 0.08);
+  box-shadow: 0 12px 36px rgba(36, 23, 15, 0.05);
+}
+
+.visit-leaflet-container {
+  width: 100%;
+  height: 100%;
+  min-height: clamp(380px, 50vh, 560px);
+  border: 0;
+  display: block;
+  background-color: #F1E9D8;
+  pointer-events: none;
+}
+
+/* Muted warm visual style filter matching #F3EBD7 palette */
+.visit-leaflet-container .leaflet-tile-pane {
+  filter: sepia(0.35) hue-rotate(-15deg) contrast(0.96) brightness(0.96) saturate(0.85);
+}
+
+.visit-leaflet-container .leaflet-control-container {
+  display: none;
+}
+
+/* Custom Marker Styling */
+.custom-leaflet-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.custom-map-pin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.pin-halo-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(242, 169, 0, 0.25);
+  border: 1px solid rgba(242, 169, 0, 0.5);
+  animation: pinPulseHalo 2.5s infinite ease-out;
+}
+
+@keyframes pinPulseHalo {
+  0% {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
+}
+
+.pin-marker-head {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #24170F;
+  border: 2px solid var(--color-secondary);
+  box-shadow: 0 4px 14px rgba(36, 23, 15, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.pin-inner-gold-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+}
+
+.pin-title-tag {
+  margin-top: 4px;
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #F3EBD7;
+  background-color: #24170F;
+  padding: 0.2rem 0.55rem;
+  border-radius: 100px;
+  border: 1px solid var(--color-secondary);
+  box-shadow: 0 4px 12px rgba(36, 23, 15, 0.25);
+  white-space: nowrap;
+  z-index: 3;
+}
+
+/* Map Overlay Card (Top-Left) */
+.visit-map-overlay {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 5;
+  pointer-events: auto;
+  background: rgba(250, 245, 232, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 1.1rem 1.35rem;
+  border: 1px solid rgba(36, 23, 15, 0.1);
+  box-shadow: 0 8px 24px rgba(36, 23, 15, 0.08);
+  max-width: 280px;
+}
+
+.visit-overlay-brand {
+  font-family: var(--font-heading, 'Playfair Display', serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #24170F;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.2rem;
+}
+
+.visit-overlay-sub {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  margin-bottom: 0.65rem;
+  display: block;
+}
+
+.visit-overlay-address {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.825rem;
+  line-height: 1.4;
+  color: #6B3518;
+  margin: 0;
+}
+
+/* Map CTA Button (Bottom-Right) */
+.visit-map-directions-btn {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 5;
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1.25rem;
+  background-color: #24170F;
+  color: #F3EBD7;
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 9999px;
+  box-shadow: 0 6px 20px rgba(36, 23, 15, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visit-map-directions-btn:hover {
+  background-color: var(--color-secondary);
+  color: #24170F;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(242, 169, 0, 0.35);
+}
+
+/* RIGHT COLUMN — STACKED CARDS */
+.visit-info-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Common Card Style */
+.visit-card {
+  background-color: #FAF5E8;
+  border: 1px solid rgba(36, 23, 15, 0.08);
+  border-radius: 20px;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  box-sizing: border-box;
+  box-shadow: 0 6px 20px rgba(36, 23, 15, 0.03);
+}
+
+/* HOURS CARD */
+.visit-card-title {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.visit-hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.visit-hours-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.visit-hours-row.is-today {
+  background-color: rgba(242, 169, 0, 0.12);
+  border: 1px solid rgba(242, 169, 0, 0.3);
+}
+
+.visit-day-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.visit-today-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-secondary);
+  box-shadow: 0 0 8px rgba(242, 169, 0, 0.8);
+}
+
+.visit-day-label {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #24170F;
+}
+
+.visit-hours-row.is-today .visit-day-label {
+  color: #24170F;
+}
+
+.visit-dotted-line {
+  flex: 1;
+  border-bottom: 2px dotted rgba(36, 23, 15, 0.15);
+  margin-inline: 0.75rem;
+}
+
+.visit-hours-value {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #6B3518;
+  white-space: pre-line;
+  text-align: right;
+}
+
+.visit-hours-row.is-today .visit-hours-value {
+  color: #24170F;
+  font-weight: 700;
+}
+
+.visit-today-badge {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #24170F;
+  background-color: var(--color-secondary);
+  padding: 0.15rem 0.45rem;
+  border-radius: 100px;
+  margin-left: 0.4rem;
+}
+
+/* Responsive Hours Desktop vs Mobile Controls */
+.visit-hours-mobile-view {
+  display: none;
+}
+
+.visit-hours-desktop-list {
+  display: block;
+}
+
+@media (max-width: 639px) {
+  .visit-hours-desktop-list {
+    display: none;
+  }
+
+  .visit-hours-mobile-view {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .visit-mobile-expandable-schedule {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  .visit-mobile-expandable-schedule.is-expanded {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: 0.35rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed rgba(36, 23, 15, 0.12);
+  }
+
+  .visit-mobile-expandable-schedule > div {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .visit-mobile-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    width: 100%;
+    padding: 0.65rem 1rem;
+    min-height: 42px;
+    background: rgba(36, 23, 15, 0.04);
+    border: 1px solid rgba(36, 23, 15, 0.12);
+    border-radius: 100px;
+    color: #24170F;
+    font-family: var(--font-body, 'Lato', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    margin-top: 0.25rem;
+  }
+
+  .visit-mobile-toggle-btn:hover,
+  .visit-mobile-toggle-btn:focus-visible {
+    background: rgba(242, 169, 0, 0.15);
+    border-color: rgba(242, 169, 0, 0.4);
+    color: #24170F;
+  }
+
+  .visit-toggle-arrow {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .visit-toggle-arrow.is-rotated {
+    transform: rotate(180deg);
+  }
+}
+
+/* CONTACT CARD */
+.visit-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .visit-contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.visit-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.visit-contact-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(242, 169, 0, 0.12);
+  border: 1px solid rgba(242, 169, 0, 0.25);
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.visit-contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.visit-contact-label {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.visit-contact-text,
+.visit-contact-link {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #24170F;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.visit-contact-link {
+  transition: color 0.25s ease;
+}
+
+.visit-contact-link:hover {
+  color: var(--color-secondary);
+}
+
+/* CTA BUTTONS ROW */
+.visit-ctas-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 480px) {
+  .visit-ctas-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.visit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  height: 48px;
+  padding-inline: 1.25rem;
+  border-radius: 9999px;
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.visit-btn-primary {
+  background-color: #6B3518;
+  color: #F3EBD7;
+  box-shadow: 0 4px 16px rgba(107, 53, 24, 0.2);
+}
+
+.visit-btn-primary:hover {
+  background-color: #24170F;
+  color: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(36, 23, 15, 0.3);
+}
+
+.visit-btn-secondary {
+  background-color: var(--color-secondary);
+  color: #24170F;
+  box-shadow: 0 4px 16px rgba(242, 169, 0, 0.2);
+}
+
+.visit-btn-secondary:hover {
+  background-color: #F5B800;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 184, 0, 0.35);
+}
+
+/* SOCIAL CONNECT CARD */
+.visit-social-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.5rem;
+}
+
+.visit-social-label {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+}
+
+.visit-social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.visit-social-icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(36, 23, 15, 0.05);
+  border: 1px solid rgba(36, 23, 15, 0.12);
+  color: #24170F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.visit-social-icon-btn:hover {
+  background: var(--color-secondary);
+  color: #24170F;
+  border-color: var(--color-secondary);
+  transform: translateY(-2px);
+}
+
+/* Reduced Motion Foundation */
+@media (prefers-reduced-motion: reduce) {
+  .visit-btn,
+  .visit-social-icon-btn,
+  .visit-map-directions-btn,
+  .visit-contact-link,
+  .visit-mobile-expandable-schedule,
+  .visit-toggle-arrow {
+    transition: none !important;
+  }
+}
