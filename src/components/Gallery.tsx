@@ -148,7 +148,7 @@ export const Gallery: React.FC = () => {
         <div className="gallery-masonry-wrapper">
           <div className="gallery-masonry-grid" ref={gridRef}>
             {GALLERY_ITEMS.map((item, index) => (
-              <article
+              <div
                 key={item.id}
                 className="gallery-masonry-item"
                 onClick={() => openLightbox(index)}
@@ -182,7 +182,7 @@ export const Gallery: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </article>
+              </div>
             ))}
           </div>
         </div>

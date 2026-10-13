@@ -230,10 +230,7 @@ export const SignatureDishes: React.FC = () => {
         </div>
 
         {/* Minimal Editorial Slide Counter & Progress Bar (01 / 08) */}
-        <div
-          className="signature-slide-indicator"
-          aria-label={`Dish ${activeIndex + 1} of ${SIGNATURE_DISHES.length}`}
-        >
+        <div className="signature-slide-indicator">
           <span className="signature-counter-text">
             {String(activeIndex + 1).padStart(2, '0')} / {String(SIGNATURE_DISHES.length).padStart(2, '0')}
           </span>

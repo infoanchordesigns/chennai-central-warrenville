@@ -90,7 +90,7 @@ export const Footer: React.FC = () => {
               aria-expanded={activeAccordions.nav}
               aria-label="Toggle Navigation menu"
             >
-              <h3 className="footer-col-heading">NAVIGATION</h3>
+              <span className="footer-col-heading">NAVIGATION</span>
               <ChevronDown
                 size={18}
                 className={`footer-accordion-arrow ${activeAccordions.nav ? 'is-open' : ''}`}
@@ -121,7 +121,7 @@ export const Footer: React.FC = () => {
               aria-expanded={activeAccordions.locations}
               aria-label="Toggle Locations section"
             >
-              <h3 className="footer-col-heading">OUR LOCATIONS</h3>
+              <span className="footer-col-heading">OUR LOCATIONS</span>
               <ChevronDown
                 size={18}
                 className={`footer-accordion-arrow ${activeAccordions.locations ? 'is-open' : ''}`}
@@ -173,7 +173,7 @@ export const Footer: React.FC = () => {
               aria-expanded={activeAccordions.connect}
               aria-label="Toggle Connect and Hours section"
             >
-              <h3 className="footer-col-heading">CONNECT WITH US</h3>
+              <span className="footer-col-heading">CONNECT WITH US</span>
               <ChevronDown
                 size={18}
                 className={`footer-accordion-arrow ${activeAccordions.connect ? 'is-open' : ''}`}

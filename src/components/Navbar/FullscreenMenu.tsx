@@ -123,6 +123,7 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
 
   return ReactDOM.createPortal(
     <div
+      id="fullscreen-menu"
       ref={overlayRef}
       className="fullscreen-overlay"
       role="dialog"

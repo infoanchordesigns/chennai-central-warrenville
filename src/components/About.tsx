@@ -87,10 +87,10 @@ export const About: React.FC = () => {
               src={ourStory1Img}
               alt="Chennai Central restaurant interior"
               className="about-card-img"
-              loading="eager"
+              loading="lazy"
               decoding="async"
-              width="1600"
-              height="1200"
+              width="1000"
+              height="622"
             />
           </div>
           <figcaption className="about-image-caption">
@@ -114,8 +114,8 @@ export const About: React.FC = () => {
               className="about-card-img"
               loading="lazy"
               decoding="async"
-              width="1600"
-              height="1200"
+              width="1000"
+              height="623"
             />
           </div>
           <figcaption className="about-image-caption">

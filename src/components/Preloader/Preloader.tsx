@@ -97,9 +97,7 @@ export const Preloader: React.FC = () => {
     <div
       ref={containerRef}
       className="preloader-overlay"
-      aria-label="Chennai Central Loading Presentation"
-      role="dialog"
-      aria-modal="true"
+      aria-hidden="true"
     >
       <div className="preloader-content-wrapper">
         <div ref={logoWrapperRef} className="preloader-logo-container">

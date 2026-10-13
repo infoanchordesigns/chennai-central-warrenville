@@ -49,7 +49,6 @@ const MenuHero: React.FC = () => {
         <div
           className="cc-menu-location-pill"
           style={{ cursor: 'default' }}
-          aria-label="Location: Warrenville"
         >
           <span className="cc-menu-location-icon" aria-hidden="true">
             📍
@@ -418,6 +417,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({ item }) => {
           <div className="cc-menu-item-title-group">
             {item.dietary && (
               <span
+                role="img"
                 className={`cc-dietary-badge cc-dietary-badge--${item.dietary}`}
                 title={
                   item.dietary === 'veg'
@@ -521,8 +521,16 @@ const FeaturedDishCard: React.FC<MenuItemCardProps> = ({ item }) => {
           <div className="cc-featured-title-group">
             {item.dietary && (
               <span
+                role="img"
                 className={`cc-dietary-badge cc-dietary-badge--${item.dietary}`}
                 title={
+                  item.dietary === 'veg'
+                    ? 'Vegetarian'
+                    : item.dietary === 'non-veg'
+                      ? 'Non-Vegetarian'
+                      : 'Contains Egg'
+                }
+                aria-label={
                   item.dietary === 'veg'
                     ? 'Vegetarian'
                     : item.dietary === 'non-veg'
@@ -640,7 +648,7 @@ const MobileStickyOrderCTA: React.FC = () => {
   const isOrderEnabled = Boolean(OFFICIAL_ORDER_URL && OFFICIAL_ORDER_URL.trim() !== '');
 
   return (
-    <div className="cc-menu-mobile-sticky-cta" aria-label="Mobile quick ordering action">
+    <div className="cc-menu-mobile-sticky-cta">
       {isOrderEnabled ? (
         <a
           href={OFFICIAL_ORDER_URL}

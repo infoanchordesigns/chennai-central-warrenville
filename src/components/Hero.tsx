@@ -23,6 +23,7 @@ export const MediaStage: React.FC = () => {
           className="hero-media-element"
           loading="eager"
           decoding="async"
+          fetchPriority="high"
           width="1920"
           height="1080"
         />
@@ -144,7 +145,6 @@ export const Hero: React.FC = () => {
             <p
               ref={revealTextRef}
               className="hero-reveal-text"
-              aria-label="Authentic South Indian cuisine, crafted with tradition and the warmth of home, brought to Warrenville, Illinois."
             >
               {REVEAL_WORDS.map((word, index) => (
                 <span

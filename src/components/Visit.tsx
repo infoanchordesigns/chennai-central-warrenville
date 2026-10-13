@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, Phone, ArrowUpRight, Instagram, Facebook, Clock, ChevronDown } from 'lucide-react';
-import L from 'leaflet';
+import type { Map as LeafletMap } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { VISIT_DATA, ALL_LOCATIONS } from '../data/visitData';
 import { ORDER_ONLINE_CONFIG } from '../data/navigation';
@@ -15,7 +15,7 @@ const WARRENVILLE_LNG = -88.1768;
 export const Visit: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
-  const leafletMapRef = useRef<L.Map | null>(null);
+  const leafletMapRef = useRef<LeafletMap | null>(null);
   const [isMobileHoursExpanded, setIsMobileHoursExpanded] = useState(false);
   const currentDayIndex = new Date().getDay(); // 0 = Sunday, 1 = Monday, etc.
 
@@ -23,68 +23,79 @@ export const Visit: React.FC = () => {
     VISIT_DATA.hoursOfOperation.find((item) => item.dayIndex === currentDayIndex) ||
     VISIT_DATA.hoursOfOperation[0];
 
-  // Leaflet Custom Muted Map Initialization
+  // Leaflet Custom Muted Map Initialization (Deferred Dynamic Import)
   useEffect(() => {
+    let isCancelled = false;
     if (!mapContainerRef.current || leafletMapRef.current) return;
 
-    // Initialize Leaflet map instance centered at Warrenville, IL
-    const map = L.map(mapContainerRef.current, {
-      center: [WARRENVILLE_LAT, WARRENVILLE_LNG],
-      zoom: 13.8,
-      zoomControl: false,
-      scrollWheelZoom: false,
-      doubleClickZoom: false,
-      dragging: false,
-      touchZoom: false,
-      boxZoom: false,
-      keyboard: false,
-      attributionControl: false,
-    });
+    import('leaflet').then((leafletModule) => {
+      if (isCancelled || !mapContainerRef.current || leafletMapRef.current) return;
+      const L = leafletModule.default || leafletModule;
 
-    leafletMapRef.current = map;
+      // Initialize Leaflet map instance centered at Warrenville, IL
+      const map = L.map(mapContainerRef.current, {
+        center: [WARRENVILLE_LAT, WARRENVILLE_LNG],
+        zoom: 13.8,
+        zoomControl: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        dragging: false,
+        touchZoom: false,
+        boxZoom: false,
+        keyboard: false,
+        attributionControl: false,
+      });
 
-    // Esri World Light Gray Base (Muted, free, public, zero API key required, no watermarks)
-    L.tileLayer(
-      'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
-      {
-        maxZoom: 16,
-      }
-    ).addTo(map);
+      leafletMapRef.current = map;
 
-    // Esri World Light Gray Reference Labels
-    L.tileLayer(
-      'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
-      {
-        maxZoom: 16,
-      }
-    ).addTo(map);
+      // Esri World Light Gray Base (Muted, free, public, zero API key required, no watermarks)
+      L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+        {
+          maxZoom: 16,
+        }
+      ).addTo(map);
 
-    // Custom Dark Brown + Gold Location Marker (Matches Arlington reference pin)
-    const customPinHtml = `
-      <div class="custom-map-pin-container" aria-hidden="true">
-        <div class="pin-halo-pulse"></div>
-        <div class="pin-marker-head">
-          <div class="pin-inner-gold-dot"></div>
+      // Esri World Light Gray Reference Labels
+      L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+        {
+          maxZoom: 16,
+        }
+      ).addTo(map);
+
+      // Custom Dark Brown + Gold Location Marker (Matches Arlington reference pin)
+      const customPinHtml = `
+        <div class="custom-map-pin-container" aria-hidden="true">
+          <div class="pin-halo-pulse"></div>
+          <div class="pin-marker-head">
+            <div class="pin-inner-gold-dot"></div>
+          </div>
+          <div class="pin-title-tag">CHENNAI CENTRAL</div>
         </div>
-        <div class="pin-title-tag">CHENNAI CENTRAL</div>
-      </div>
-    `;
+      `;
 
-    const customIcon = L.divIcon({
-      html: customPinHtml,
-      className: 'custom-leaflet-marker',
-      iconSize: [120, 54],
-      iconAnchor: [60, 27],
+      const customIcon = L.divIcon({
+        html: customPinHtml,
+        className: 'custom-leaflet-marker',
+        iconSize: [120, 54],
+        iconAnchor: [60, 27],
+      });
+
+      L.marker([WARRENVILLE_LAT, WARRENVILLE_LNG], {
+        icon: customIcon,
+        interactive: false,
+      }).addTo(map);
+    }).catch((error) => {
+      console.warn('Unable to load interactive map:', error);
     });
-
-    L.marker([WARRENVILLE_LAT, WARRENVILLE_LNG], {
-      icon: customIcon,
-      interactive: false,
-    }).addTo(map);
 
     return () => {
-      map.remove();
-      leafletMapRef.current = null;
+      isCancelled = true;
+      if (leafletMapRef.current) {
+        leafletMapRef.current.remove();
+        leafletMapRef.current = null;
+      }
     };
   }, []);
 
@@ -182,6 +193,7 @@ export const Visit: React.FC = () => {
             <div
               ref={mapContainerRef}
               className="visit-leaflet-container"
+              role="region"
               aria-label="Interactive visual map of Chennai Central Warrenville location"
             />
 

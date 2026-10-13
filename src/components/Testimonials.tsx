@@ -87,7 +87,7 @@ export const Testimonials: React.FC = () => {
         </div>
 
         {/* 5-Star Rating Row */}
-        <div className="testimonial-stars-row" aria-label={`Rating: ${item.rating} out of 5 stars`}>
+        <div role="img" className="testimonial-stars-row" aria-label={`Rating: ${item.rating} out of 5 stars`}>
           {Array.from({ length: item.rating }).map((_, i) => (
             <Star key={i} size={15} fill="#C9A24B" stroke="none" />
           ))}
