@@ -165,12 +165,10 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
 
         <div className="overlay-cta-container">
           <a
-            href="#order"
-            onClick={(e) => {
-              e.preventDefault();
-              alert(ORDER_ONLINE_CONFIG.urlPlaceholder);
-              handleClose();
-            }}
+            href={ORDER_ONLINE_CONFIG.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleClose}
             className="overlay-order-cta"
           >
             <span>ORDER ONLINE</span>

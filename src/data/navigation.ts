@@ -15,8 +15,12 @@ export const NAVIGATION_ITEMS: NavItem[] = [
   { id: 'menu', number: '07', label: 'MENU', href: '/menu' },
 ];
 
+export const OFFICIAL_ORDER_URL =
+  'https://toast.app/r/chennai-central-28331-dodge-drive/order/r-c51c73fb-9999-4baa-aab2-c229a7b33f28?diningOption=takeout&rwg_token=AE37R_hkg8YxM__cMqXQ3HuwVjXS-kV2GL_s1HyWx_ySizGKzzIkpUNZYQYQHQhlYnXoecz-3VJjce79-xUzoU0a_1vWKWqQtw%3D%3D&utm_medium=redirect';
+
 export const ORDER_ONLINE_CONFIG = {
-  urlPlaceholder: '[CLIENT ORDERING URL REQUIRED]',
+  url: OFFICIAL_ORDER_URL,
+  urlPlaceholder: OFFICIAL_ORDER_URL,
   label: 'ORDER NOW',
   phonePlaceholder: null, // Only set when verified client phone exists
   whatsappPlaceholder: null, // Only set when verified client WhatsApp exists

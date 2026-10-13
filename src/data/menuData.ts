@@ -6,6 +6,18 @@
  * Preserves all canonical items, descriptions, pricing, and availability.
  */
 
+import bhaiBiryaniImg from '../assets/images/menu/bhai-biryani.webp';
+import chicken65Img from '../assets/images/menu/chicken-65.webp';
+import chickenChukkaDosaImg from '../assets/images/menu/chicken-chukka-dosa.webp';
+import chickenTikkaImg from '../assets/images/menu/chicken-tikka.webp';
+import filterCoffeeImg from '../assets/images/menu/filter-coffee.webp';
+import goatBiryaniImg from '../assets/images/menu/goat-biryani.webp';
+import gulabJamunImg from '../assets/images/menu/gulab-jamun.webp';
+import kothuParathaImg from '../assets/images/menu/kothu-paratha.webp';
+import masalaDosaImg from '../assets/images/menu/masala-dosa.webp';
+import muttonCurryImg from '../assets/images/menu/mutton-curry.webp';
+import seeragasambaBiryaniImg from '../assets/images/menu/seeragasamba-biryani.webp';
+
 export type DietaryType = 'veg' | 'non-veg' | 'egg';
 
 export interface MenuItem {
@@ -27,7 +39,8 @@ export interface MenuCategory {
   items: MenuItem[];
 }
 
-export const OFFICIAL_ORDER_URL: string = '';
+export const OFFICIAL_ORDER_URL: string =
+  'https://toast.app/r/chennai-central-28331-dodge-drive/order/r-c51c73fb-9999-4baa-aab2-c229a7b33f28?diningOption=takeout&rwg_token=AE37R_hkg8YxM__cMqXQ3HuwVjXS-kV2GL_s1HyWx_ySizGKzzIkpUNZYQYQHQhlYnXoecz-3VJjce79-xUzoU0a_1vWKWqQtw%3D%3D&utm_medium=redirect';
 
 export const menuCategories: MenuCategory[] = [
   {
@@ -44,8 +57,7 @@ export const menuCategories: MenuCategory[] = [
         available: false,
         dietary: 'non-veg',
         featured: true,
-        image: '/images/signature/bhai-biryani/main.webp',
-        imageSm: '/images/signature/bhai-biryani/main-sm.webp',
+        image: bhaiBiryaniImg,
       },
       {
         id: 'biryani-thalapakatti-goat-biryani-2',
@@ -55,8 +67,7 @@ export const menuCategories: MenuCategory[] = [
         available: false,
         dietary: 'non-veg',
         featured: true,
-        image: '/images/signature/goat-biryani/main.webp',
-        imageSm: '/images/signature/goat-biryani/main-sm.webp',
+        image: goatBiryaniImg,
       },
       {
         id: 'biryani-cc-seeragasamba-chicken-biryani-3',
@@ -66,8 +77,7 @@ export const menuCategories: MenuCategory[] = [
         available: true,
         dietary: 'non-veg',
         featured: true,
-        image: '/images/signature/bhai-biryani/main.webp',
-        imageSm: '/images/signature/bhai-biryani/main-sm.webp',
+        image: seeragasambaBiryaniImg,
       },
       {
         id: 'biryani-plain-kuska-4',
@@ -205,8 +215,7 @@ export const menuCategories: MenuCategory[] = [
         available: true,
         dietary: 'veg',
         featured: true,
-        image: '/images/signature/masala-dosa/main.webp',
-        imageSm: '/images/signature/masala-dosa/main-sm.webp',
+        image: masalaDosaImg,
       },
       {
         id: 'dosa-corner-mysore-masala-dosa-3',
@@ -296,8 +305,7 @@ export const menuCategories: MenuCategory[] = [
         available: true,
         dietary: 'non-veg',
         featured: true,
-        image: '/images/signature/chicken-chukka-dosa/main.webp',
-        imageSm: '/images/signature/chicken-chukka-dosa/main-sm.webp',
+        image: chickenChukkaDosaImg,
       },
       {
         id: 'dosa-corner-ghee-podi-dosa-14',
@@ -800,8 +808,7 @@ export const menuCategories: MenuCategory[] = [
         available: true,
         dietary: 'non-veg',
         featured: true,
-        image: '/images/signature/chicken-65/main.webp',
-        imageSm: '/images/signature/chicken-65/main-sm.webp',
+        image: chicken65Img,
       },
       {
         id: 'non-veg-starter-kal-meen-tawa-fish-7',
@@ -994,8 +1001,7 @@ export const menuCategories: MenuCategory[] = [
         available: true,
         dietary: 'non-veg',
         featured: true,
-        image: '/images/signature/chicken-tikka/main.webp',
-        imageSm: '/images/signature/chicken-tikka/main-sm.webp',
+        image: chickenTikkaImg,
       },
       {
         id: 'tandoori-tandoori-chicken-half-2',
@@ -1218,8 +1224,7 @@ export const menuCategories: MenuCategory[] = [
         available: true,
         dietary: 'non-veg',
         featured: true,
-        image: '/images/footer/mutton-curry.webp',
-        imageSm: '/images/footer/mutton-curry-sm.webp',
+        image: muttonCurryImg,
       },
       {
         id: 'non-veg-entree-chettinad-prawn-masala-4',
@@ -1468,8 +1473,7 @@ export const menuCategories: MenuCategory[] = [
         available: true,
         dietary: 'non-veg',
         featured: true,
-        image: '/images/signature/kothu-paratha/main.webp',
-        imageSm: '/images/signature/kothu-paratha/main-sm.webp',
+        image: kothuParathaImg,
       },
       {
         id: 'cc-paratha-corner-veg-kizhi-paratha-14',
@@ -1960,8 +1964,7 @@ export const menuCategories: MenuCategory[] = [
         available: true,
         dietary: 'veg',
         featured: true,
-        image: '/images/signature/gulab-jamun/main.webp',
-        imageSm: '/images/signature/gulab-jamun/main-sm.webp',
+        image: gulabJamunImg,
       },
       {
         id: 'desserts-rasmalai-2',
@@ -2114,8 +2117,7 @@ export const menuCategories: MenuCategory[] = [
         available: true,
         dietary: 'veg',
         featured: true,
-        image: '/images/footer/filter-coffee.webp',
-        imageSm: '/images/footer/filter-coffee-sm.webp',
+        image: filterCoffeeImg,
       },
       {
         id: 'drinks-thums-up-11',

@@ -15,4 +15,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://chennaicentralwarrenville.com/sitemap.xml
+Sitemap: https://mychennaicentral.com/sitemap.xml

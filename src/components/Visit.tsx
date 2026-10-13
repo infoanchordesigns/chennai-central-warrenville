@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, Phone, ArrowUpRight, Instagram, Facebook, Clock, ChevronDown } from 'lucide-react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { VISIT_DATA } from '../data/visitData';
+import { VISIT_DATA, ALL_LOCATIONS } from '../data/visitData';
 import { ORDER_ONLINE_CONFIG } from '../data/navigation';
 import './Visit.css';
 
@@ -303,40 +303,58 @@ export const Visit: React.FC = () => {
               </div>
             </div>
 
-            {/* Contact Card */}
+            {/* Locations & Contact Card */}
             <div className="visit-card visit-contact-card">
-              <div className="visit-contact-grid">
-                {/* Location Item */}
-                <div className="visit-contact-item">
-                  <div className="visit-contact-icon" aria-hidden="true">
-                    <MapPin size={18} />
-                  </div>
-                  <div className="visit-contact-info">
-                    <span className="visit-contact-label">LOCATION</span>
-                    <span className="visit-contact-text">
-                      {VISIT_DATA.addressLine1}
-                      <br />
-                      {VISIT_DATA.addressLine2}
-                    </span>
-                  </div>
-                </div>
+              <h3 className="visit-card-title">
+                <MapPin size={16} aria-hidden="true" />
+                OUR RESTAURANT LOCATIONS
+              </h3>
 
-                {/* Phone Item */}
-                <div className="visit-contact-item">
-                  <div className="visit-contact-icon" aria-hidden="true">
-                    <Phone size={18} />
+              <div className="visit-branches-list">
+                {ALL_LOCATIONS.map((branch) => (
+                  <div
+                    key={branch.id}
+                    className={`visit-branch-item ${branch.id === 'warrenville' ? 'is-primary' : ''}`}
+                  >
+                    <div className="visit-branch-header">
+                      <h4 className="visit-branch-name">{branch.name}</h4>
+                      <span className="visit-branch-tag">{branch.tag}</span>
+                    </div>
+
+                    <div className="visit-branch-details">
+                      <div className="visit-branch-row">
+                        <MapPin size={14} className="visit-branch-row-icon" aria-hidden="true" />
+                        <span className="visit-branch-address">
+                          {branch.addressLine1}, {branch.addressLine2}
+                        </span>
+                      </div>
+
+                      <div className="visit-branch-row">
+                        <Phone size={14} className="visit-branch-row-icon" aria-hidden="true" />
+                        <a
+                          href={branch.phoneTel}
+                          className="visit-branch-phone"
+                          aria-label={`Call ${branch.name} at ${branch.phoneDisplay}`}
+                        >
+                          {branch.phoneDisplay}
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="visit-branch-footer">
+                      <a
+                        href={branch.googleMapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="visit-branch-directions-link"
+                        aria-label={`Get directions to ${branch.name} on Google Maps`}
+                      >
+                        <span>GET DIRECTIONS</span>
+                        <ArrowUpRight size={13} />
+                      </a>
+                    </div>
                   </div>
-                  <div className="visit-contact-info">
-                    <span className="visit-contact-label">TELEPHONE</span>
-                    <a
-                      href={VISIT_DATA.phoneTel}
-                      className="visit-contact-link"
-                      aria-label={`Call Chennai Central at ${VISIT_DATA.phoneDisplay}`}
-                    >
-                      {VISIT_DATA.phoneDisplay}
-                    </a>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -347,17 +365,16 @@ export const Visit: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="visit-btn visit-btn-primary"
+                aria-label="Get directions to Chennai Central Warrenville on Google Maps"
               >
-                <span>GET DIRECTIONS</span>
+                <span>DIRECTIONS (WARRENVILLE)</span>
                 <ArrowUpRight size={16} />
               </a>
 
               <a
-                href="#order"
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert(ORDER_ONLINE_CONFIG.urlPlaceholder);
-                }}
+                href={ORDER_ONLINE_CONFIG.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="visit-btn visit-btn-secondary"
               >
                 <span>ORDER ONLINE</span>

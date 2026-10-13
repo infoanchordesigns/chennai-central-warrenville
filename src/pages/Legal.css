@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Chennai Central Warrenville - Legal Pages Stylesheet
+   Preserves brand palette (Ivory / Espresso / Terracotta) & typography
+   ========================================================================== */
+
+.page-legal-foundation {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg, #F3EBD7);
+  color: var(--color-text-body, #2B2420);
+}
+
+.legal-content-container {
+  flex: 1;
+  width: 100%;
+  max-width: 840px;
+  margin-inline: auto;
+  box-sizing: border-box;
+  /* Sufficient clearance below fixed floating navbar */
+  padding-top: clamp(120px, 14vw, 160px);
+  padding-bottom: clamp(60px, 8vw, 100px);
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+}
+
+.legal-header {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(36, 23, 15, 0.15);
+  padding-bottom: 1.5rem;
+}
+
+.legal-title {
+  font-family: var(--font-heading, 'Playfair Display', Georgia, serif);
+  font-size: var(--font-size-h1, clamp(2.125rem, 5vw, 3.5rem));
+  color: var(--color-primary, #24170F);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.legal-last-updated {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: var(--font-size-ui, 0.95rem);
+  color: var(--color-text-muted, #6E6259);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.legal-section {
+  margin-bottom: 2.25rem;
+}
+
+.legal-section-title {
+  font-family: var(--font-heading, 'Playfair Display', Georgia, serif);
+  font-size: var(--font-size-h2, clamp(1.5rem, 3.5vw, 2rem));
+  color: var(--color-primary, #24170F);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.legal-sub-title {
+  font-family: var(--font-heading, 'Playfair Display', Georgia, serif);
+  font-size: var(--font-size-h3, clamp(1.2rem, 2.5vw, 1.4rem));
+  color: var(--color-primary, #24170F);
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal-text {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: var(--font-size-body, 1.05rem);
+  color: var(--color-text-body, #2B2420);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.legal-list {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: var(--font-size-body, 1.05rem);
+  color: var(--color-text-body, #2B2420);
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.legal-list li {
+  margin-bottom: 0.5rem;
+}
+
+.legal-list strong {
+  color: var(--color-primary, #24170F);
+}
+
+.legal-contact-card {
+  background-color: var(--color-bg-light, #FAF7F2);
+  border: 1px solid rgba(36, 23, 15, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.legal-contact-card p {
+  margin-bottom: 0.5rem;
+}
+
+.legal-contact-card p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-link {
+  color: var(--color-accent, #B23B1E);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  display: inline;
+  min-height: auto;
+  transition: color var(--transition-fast, 0.2s ease);
+}
+
+.legal-link:hover {
+  color: var(--color-accent-hover, #932E16);
+}

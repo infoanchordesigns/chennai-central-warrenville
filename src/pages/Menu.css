@@ -324,45 +324,23 @@
  * -------------------------------------------------------------------------- */
 .cc-menu-sticky-header {
   position: sticky;
-  top: 68px;
+  top: 60px;
   z-index: 45;
-  background-color: rgba(250, 242, 229, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: #FAF2E5;
   border-top: 1px solid rgba(210, 170, 98, 0.16);
   border-bottom: 1px solid rgba(210, 170, 98, 0.22);
   box-shadow: 0 4px 16px rgba(42, 23, 12, 0.04);
   padding: var(--space-3) 0;
-  transition: top 280ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms ease;
+  transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms ease;
 }
 
-/* When global navbar reveals during scroll-up or at top of page */
+/* Synchronized top offset matching exact floating navbar state */
 body.navbar-is-visible .cc-menu-sticky-header {
-  top: clamp(74px, 10vh, 84px);
+  top: 60px;
 }
 
 body.navbar-is-hidden .cc-menu-sticky-header {
   top: 0;
-}
-
-@media (max-width: 1139px) {
-  .cc-menu-sticky-header,
-  body.navbar-is-visible .cc-menu-sticky-header {
-    top: 68px;
-  }
-  body.navbar-is-hidden .cc-menu-sticky-header {
-    top: 0;
-  }
-}
-
-@media (max-width: 767px) {
-  .cc-menu-sticky-header,
-  body.navbar-is-visible .cc-menu-sticky-header {
-    top: 62px;
-  }
-  body.navbar-is-hidden .cc-menu-sticky-header {
-    top: 0;
-  }
 }
 
 .cc-menu-sticky-inner {
@@ -567,13 +545,22 @@ body.navbar-is-hidden .cc-menu-sticky-header {
 .cc-menu-filters-sidebar {
   flex: 0 0 240px;
   position: sticky;
-  top: 140px;
+  top: 175px;
   background-color: var(--cc-cream-pure, #FDF7ED);
   border: 1px solid rgba(210, 170, 98, 0.28);
   border-radius: var(--radius-xl);
   padding: var(--space-5);
   box-shadow: 0 4px 16px rgba(42, 23, 12, 0.04);
   box-sizing: border-box;
+  transition: top 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.navbar-is-visible .cc-menu-filters-sidebar {
+  top: 175px;
+}
+
+body.navbar-is-hidden .cc-menu-filters-sidebar {
+  top: 115px;
 }
 
 .cc-menu-filters-inner {
@@ -825,10 +812,10 @@ body.navbar-is-hidden .cc-menu-sticky-header {
   max-width: 680px;
 }
 
-/* Featured Dishes Grid (3-column on large screens) */
+/* Featured Dishes Grid (3-column on desktop) */
 .cc-menu-featured-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
   margin-bottom: var(--space-4);
 }
@@ -961,11 +948,11 @@ body.navbar-is-hidden .cc-menu-sticky-header {
   transform: translateY(-1px);
 }
 
-/* Standard Dishes Grid (2-column on desktop) */
+/* Standard Dishes Grid (3-column on desktop) */
 .cc-menu-items-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--space-3);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
 }
 
 .cc-menu-item-card {
@@ -1295,11 +1282,18 @@ body.navbar-is-hidden .cc-menu-sticky-header {
   }
 
   .cc-menu-mobile-filter-btn {
-    display: flex;
+    display: inline-flex;
   }
 
   .cc-menu-layout-container {
     padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 1140px) {
+  .cc-menu-featured-grid,
+  .cc-menu-items-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

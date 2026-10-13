@@ -27,8 +27,8 @@ export const FOOTER_BRAND_INFO = {
 export const FOOTER_LOCATIONS: LocationItem[] = [
   {
     id: 'warrenville',
-    locationNumber: 'LOCATION 01',
-    name: 'WARRENVILLE',
+    locationNumber: 'LOCATION 01 · WARRENVILLE',
+    name: 'Chennai Central Warrenville',
     addressLine1: '28331 Dodge Dr',
     addressLine2: 'Warrenville, IL 60555',
     phoneDisplay: '(630) 393-6570',
@@ -37,13 +37,13 @@ export const FOOTER_LOCATIONS: LocationItem[] = [
   },
   {
     id: 'arlington',
-    locationNumber: 'LOCATION 02',
-    name: 'ARLINGTON HEIGHTS',
+    locationNumber: 'LOCATION 02 · ARLINGTON HEIGHTS',
+    name: 'Chennai Central Arlington Heights',
     addressLine1: '1035 S Arlington Heights Rd',
     addressLine2: 'Arlington Heights, IL 60005',
     phoneDisplay: '(847) 262-5997',
     phoneTel: 'tel:8472625997',
-    directionsUrl: 'https://maps.app.goo.gl/jQEWagDBRoHXvKHp9',
+    directionsUrl: 'https://www.google.com/maps/search/?api=1&query=Chennai+Central+1035+S+Arlington+Heights+Rd+Arlington+Heights+IL+60005',
   },
 ];
 
@@ -59,12 +59,12 @@ export const FOOTER_NAV_LINKS: FooterNavLink[] = [
 
 export const FOOTER_SOCIAL_CONFIG = {
   instagram: {
-    label: '@chennai_central_restaurant',
-    url: 'https://www.instagram.com/chennai_central_restaurant/',
+    label: '@chennai_central_warrenville',
+    url: 'https://www.instagram.com/chennai_central_warrenville/',
   },
   facebook: {
-    label: 'Chennai Central Arlington Heights',
-    url: 'https://www.facebook.com/p/Chennai-Central-Arlington-Heights-61579620741874/',
+    label: 'Chennai Central Warrenville',
+    url: 'https://www.facebook.com/chennaicentralwarrenville',
   },
 };
 

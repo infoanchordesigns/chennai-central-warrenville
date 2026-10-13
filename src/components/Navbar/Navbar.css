@@ -17,45 +17,25 @@
 }
 
 .header-scrolled {
-  background-color: rgba(250, 247, 242, 0.90);
+  background-color: rgba(250, 247, 242, 0.96);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(34, 27, 24, 0.08);
-  padding-block: clamp(0.5rem, 1vh, 0.75rem);
+  padding-block: 8px;
   box-shadow: 0 4px 20px rgba(34, 27, 24, 0.04);
 }
 
 /* Hide-on-Scroll Retraction */
 .navbar-brand-left,
-.navbar-cta-pill {
+.navbar-cta-pill,
+.menu-trigger-compact {
   transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .header-floating-bar.is-nav-hidden:not(.is-menu-open) {
-  background-color: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-bottom-color: transparent !important;
-  box-shadow: none !important;
+  transform: translateY(-100%);
   pointer-events: none;
-}
-
-.header-floating-bar.is-nav-hidden:not(.is-menu-open) .navbar-brand-left,
-.header-floating-bar.is-nav-hidden:not(.is-menu-open) .navbar-cta-pill {
-  opacity: 0;
-  transform: translateY(-12px);
-  pointer-events: none;
-}
-
-.header-floating-bar.is-nav-hidden:not(.is-menu-open) .menu-trigger-compact {
-  pointer-events: auto;
-  background-color: rgba(250, 247, 242, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 16px rgba(34, 27, 24, 0.10);
-  border-color: rgba(178, 59, 30, 0.22);
-  color: #B23B1E;
 }
 
 .header-bar-container {

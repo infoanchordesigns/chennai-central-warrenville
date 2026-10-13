@@ -254,11 +254,9 @@ export const SignatureDishes: React.FC = () => {
         {/* CTAs Row */}
         <div className="signature-cta-row">
           <a
-            href="#order"
-            onClick={(e) => {
-              e.preventDefault();
-              alert(ORDER_ONLINE_CONFIG.urlPlaceholder);
-            }}
+            href={ORDER_ONLINE_CONFIG.url}
+            target="_blank"
+            rel="noopener noreferrer"
             className="signature-cta-primary"
           >
             ORDER ONLINE &rarr;

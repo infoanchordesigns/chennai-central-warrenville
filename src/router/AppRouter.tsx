@@ -6,6 +6,7 @@ const Menu = lazy(() => import('../pages/Menu').then(m => ({ default: m.Menu }))
 const PrivacyPolicy = lazy(() => import('../pages/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
 const Terms = lazy(() => import('../pages/Terms').then(m => ({ default: m.Terms })));
 const AccessibilityStatement = lazy(() => import('../pages/AccessibilityStatement').then(m => ({ default: m.AccessibilityStatement })));
+const NotFound = lazy(() => import('../pages/NotFound').then(m => ({ default: m.NotFound })));
 
 export const AppRouter: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ export const AppRouter: React.FC = () => {
           <Route path="/terms" element={<Terms />} />
           <Route path="/accessibility-statement" element={<AccessibilityStatement />} />
           <Route path="/accessibility" element={<AccessibilityStatement />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

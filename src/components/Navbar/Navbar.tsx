@@ -79,11 +79,9 @@ export const Navbar: React.FC = () => {
           {/* RIGHT: Actions (Order Online CTA + Minimal Hamburger Trigger) */}
           <div className="navbar-actions-group">
             <a
-              href="#order"
-              onClick={(e) => {
-                e.preventDefault();
-                alert(ORDER_ONLINE_CONFIG.urlPlaceholder);
-              }}
+              href={ORDER_ONLINE_CONFIG.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="navbar-cta-pill"
             >
               <span>ORDER ONLINE</span>

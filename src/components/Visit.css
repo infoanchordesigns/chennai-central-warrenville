@@ -497,6 +497,120 @@
   color: var(--color-secondary);
 }
 
+/* LOCATIONS & BRANCHES STYLING */
+.visit-branches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.visit-branch-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px dashed rgba(36, 23, 15, 0.12);
+}
+
+.visit-branch-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.visit-branch-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.visit-branch-name {
+  font-family: var(--font-heading, 'Playfair Display', Georgia, serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #24170F;
+  margin: 0;
+}
+
+.visit-branch-tag {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #24170F;
+  background-color: var(--color-secondary);
+  padding: 0.15rem 0.5rem;
+  border-radius: 100px;
+}
+
+.visit-branch-item:not(.is-primary) .visit-branch-tag {
+  background-color: rgba(36, 23, 15, 0.08);
+  color: #6B3518;
+}
+
+.visit-branch-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.visit-branch-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.visit-branch-row-icon {
+  color: var(--color-secondary);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.visit-branch-address {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #6B3518;
+}
+
+.visit-branch-phone {
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #24170F;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.visit-branch-phone:hover {
+  color: var(--color-secondary);
+}
+
+.visit-branch-footer {
+  margin-top: 0.25rem;
+}
+
+.visit-branch-directions-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.visit-branch-directions-link:hover {
+  color: #24170F;
+  transform: translateX(3px);
+}
+
 /* CTA BUTTONS ROW */
 .visit-ctas-row {
   display: grid;

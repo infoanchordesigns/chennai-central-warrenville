@@ -5,42 +5,54 @@ interface PageMetaOptions {
   description: string;
   canonicalPath?: string;
   noindex?: boolean;
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
-const getBaseUrl = (): string => {
-  if (typeof window !== 'undefined' && window.location.origin) {
-    return window.location.origin;
+export const PRODUCTION_ORIGIN = 'https://mychennaicentral.com';
+export const DEFAULT_OG_IMAGE = `${PRODUCTION_ORIGIN}/restaurant-ambience.webp`;
+export const DEFAULT_OG_IMAGE_ALT = 'Chennai Central South Indian Restaurant interior in Warrenville, IL';
+
+const buildCanonicalUrl = (canonicalPath: string = ''): string => {
+  if (!canonicalPath || canonicalPath === '/') {
+    return `${PRODUCTION_ORIGIN}/`;
   }
-  return '';
+  const cleanPath = canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`;
+  return `${PRODUCTION_ORIGIN}${cleanPath}`;
 };
 
-export const usePageMeta = ({ title, description, canonicalPath = '', noindex = false }: PageMetaOptions) => {
+const setOrCreateMeta = (attrName: 'name' | 'property', attrValue: string, content: string) => {
+  let el = document.querySelector(`meta[${attrName}="${attrValue}"]`);
+  if (el) {
+    el.setAttribute('content', content);
+  } else {
+    el = document.createElement('meta');
+    el.setAttribute(attrName, attrValue);
+    el.setAttribute('content', content);
+    document.head.appendChild(el);
+  }
+};
+
+export const usePageMeta = ({
+  title,
+  description,
+  canonicalPath = '',
+  noindex = false,
+  ogImage = DEFAULT_OG_IMAGE,
+  ogImageAlt = DEFAULT_OG_IMAGE_ALT,
+}: PageMetaOptions) => {
   useEffect(() => {
     // 1. Title
     document.title = title;
 
     // 2. Description
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', description);
-    } else {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      metaDesc.setAttribute('content', description);
-      document.head.appendChild(metaDesc);
-    }
+    setOrCreateMeta('name', 'description', description);
 
     // 3. Robots
-    let metaRobots = document.querySelector('meta[name="robots"]');
-    if (noindex) {
-      if (metaRobots) metaRobots.setAttribute('content', 'noindex, follow');
-    } else {
-      if (metaRobots) metaRobots.setAttribute('content', 'index, follow');
-    }
+    setOrCreateMeta('name', 'robots', noindex ? 'noindex, follow' : 'index, follow');
 
     // 4. Canonical
-    const baseUrl = getBaseUrl();
-    const fullCanonical = canonicalPath ? `${baseUrl}${canonicalPath}` : baseUrl;
+    const fullCanonical = buildCanonicalUrl(canonicalPath);
     let linkCanonical = document.querySelector('link[rel="canonical"]');
     if (linkCanonical) {
       linkCanonical.setAttribute('href', fullCanonical);
@@ -51,35 +63,19 @@ export const usePageMeta = ({ title, description, canonicalPath = '', noindex = 
       document.head.appendChild(linkCanonical);
     }
 
-    // 5. Open Graph Title & Description & URL
-    let ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) {
-      ogTitle.setAttribute('content', title);
-    } else {
-      ogTitle = document.createElement('meta');
-      ogTitle.setAttribute('property', 'og:title');
-      ogTitle.setAttribute('content', title);
-      document.head.appendChild(ogTitle);
-    }
+    // 5. Open Graph Meta Tags
+    setOrCreateMeta('property', 'og:title', title);
+    setOrCreateMeta('property', 'og:description', description);
+    setOrCreateMeta('property', 'og:url', fullCanonical);
+    setOrCreateMeta('property', 'og:image', ogImage);
+    setOrCreateMeta('property', 'og:image:secure_url', ogImage);
+    setOrCreateMeta('property', 'og:image:alt', ogImageAlt);
 
-    let ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) {
-      ogDesc.setAttribute('content', description);
-    } else {
-      ogDesc = document.createElement('meta');
-      ogDesc.setAttribute('property', 'og:description');
-      ogDesc.setAttribute('content', description);
-      document.head.appendChild(ogDesc);
-    }
-
-    let ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) {
-      ogUrl.setAttribute('content', fullCanonical);
-    } else {
-      ogUrl = document.createElement('meta');
-      ogUrl.setAttribute('property', 'og:url');
-      ogUrl.setAttribute('content', fullCanonical);
-      document.head.appendChild(ogUrl);
-    }
-  }, [title, description, canonicalPath, noindex]);
+    // 6. Twitter / X Meta Tags
+    setOrCreateMeta('name', 'twitter:card', 'summary_large_image');
+    setOrCreateMeta('name', 'twitter:title', title);
+    setOrCreateMeta('name', 'twitter:description', description);
+    setOrCreateMeta('name', 'twitter:image', ogImage);
+    setOrCreateMeta('name', 'twitter:image:alt', ogImageAlt);
+  }, [title, description, canonicalPath, noindex, ogImage, ogImageAlt]);
 };

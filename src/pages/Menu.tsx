@@ -794,11 +794,11 @@ export const Menu: React.FC = () => {
     if (catId === 'all') {
       const heroEl = document.querySelector('.cc-menu-hero');
       const heroHeight = heroEl ? heroEl.getBoundingClientRect().height : 380;
-      window.scrollTo({ top: heroHeight - 80, behavior: 'smooth' });
+      window.scrollTo({ top: heroHeight - 60, behavior: 'smooth' });
     } else {
       const el = document.getElementById(catId);
       if (el) {
-        const offset = 140;
+        const offset = 175;
         const bodyRect = document.body.getBoundingClientRect().top;
         const elementRect = el.getBoundingClientRect().top;
         const elementPosition = elementRect - bodyRect;
@@ -831,7 +831,7 @@ export const Menu: React.FC = () => {
         });
       },
       {
-        rootMargin: '-140px 0px -60% 0px',
+        rootMargin: '-170px 0px -60% 0px',
         threshold: 0.1,
       }
     );
@@ -860,19 +860,33 @@ export const Menu: React.FC = () => {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
+            '@graph': [
               {
-                '@type': 'ListItem',
-                position: 1,
-                name: 'Home',
-                item: '/',
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                  {
+                    '@type': 'ListItem',
+                    position: 1,
+                    name: 'Home',
+                    item: 'https://mychennaicentral.com/',
+                  },
+                  {
+                    '@type': 'ListItem',
+                    position: 2,
+                    name: 'Menu',
+                    item: 'https://mychennaicentral.com/menu',
+                  },
+                ],
               },
               {
-                '@type': 'ListItem',
-                position: 2,
-                name: 'Menu',
-                item: '/menu',
+                '@type': 'Menu',
+                '@id': 'https://mychennaicentral.com/menu#menu',
+                name: 'Chennai Central Warrenville South Indian Menu',
+                description:
+                  'Authentic South Indian dishes, biryani, dosa, curries, vegetarian favorites, and desserts at Chennai Central Warrenville.',
+                url: 'https://mychennaicentral.com/menu',
+                inLanguage: 'en-US',
+                mainEntityOfPage: 'https://mychennaicentral.com/menu',
               },
             ],
           }),

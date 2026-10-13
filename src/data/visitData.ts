@@ -28,7 +28,7 @@ export const VISIT_DATA: VisitData = {
   phoneTel: 'tel:6303936570',
   googleMapsUrl: 'https://maps.app.goo.gl/jQEWagDBRoHXvKHp9',
   mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2975.289357492813!2d-88.17684612345!3d41.81156827124971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e5676722d3d99%3A0x8bb8c31e217d8338!2s28331%20Dodge%20Dr%2C%20Warrenville%2C%20IL%2060555!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus',
-  instagramUrl: 'https://www.instagram.com/chennaicentral_warrenville',
+  instagramUrl: 'https://www.instagram.com/chennai_central_warrenville/',
   facebookUrl: 'https://www.facebook.com/chennaicentralwarrenville',
   hoursOfOperation: [
     { day: 'MONDAY', dayShort: 'MON', dayIndex: 1, hours: '11:30 AM – 3:00 PM\n5:30 PM – 10:00 PM' },
@@ -40,3 +40,41 @@ export const VISIT_DATA: VisitData = {
     { day: 'SUNDAY', dayShort: 'SUN', dayIndex: 0, hours: '11:30 AM – 9:00 PM' },
   ],
 };
+
+export interface BranchLocation {
+  id: string;
+  name: string;
+  tag: string;
+  addressLine1: string;
+  addressLine2: string;
+  phoneDisplay: string;
+  phoneTel: string;
+  googleMapsUrl: string;
+  facebookUrl?: string;
+}
+
+export const ALL_LOCATIONS: BranchLocation[] = [
+  {
+    id: 'warrenville',
+    name: 'Chennai Central Warrenville',
+    tag: 'Primary Location',
+    addressLine1: '28331 Dodge Dr',
+    addressLine2: 'Warrenville, IL 60555',
+    phoneDisplay: '(630) 393-6570',
+    phoneTel: 'tel:6303936570',
+    googleMapsUrl: 'https://maps.app.goo.gl/jQEWagDBRoHXvKHp9',
+    facebookUrl: 'https://www.facebook.com/chennaicentralwarrenville',
+  },
+  {
+    id: 'arlington',
+    name: 'Chennai Central Arlington Heights',
+    tag: 'Sister Location',
+    addressLine1: '1035 S Arlington Heights Rd',
+    addressLine2: 'Arlington Heights, IL 60005',
+    phoneDisplay: '(847) 262-5997',
+    phoneTel: 'tel:8472625997',
+    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Chennai+Central+1035+S+Arlington+Heights+Rd+Arlington+Heights+IL+60005',
+    facebookUrl: 'https://www.facebook.com/p/Chennai-Central-Arlington-Heights-61579620741874/',
+  },
+];
+

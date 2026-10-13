@@ -133,6 +133,7 @@ export const Footer: React.FC = () => {
                 <div className="footer-locations-list">
                   {FOOTER_LOCATIONS.map((loc) => (
                     <div key={loc.id} className="footer-loc-item">
+                      <span className="footer-loc-badge">{loc.locationNumber}</span>
                       <h4 className="footer-loc-heading">{loc.name}</h4>
                       <p className="footer-loc-address-text">
                         {loc.addressLine1}
@@ -238,11 +239,9 @@ export const Footer: React.FC = () => {
           </a>
 
           <a
-            href="#order"
-            onClick={(e) => {
-              e.preventDefault();
-              alert(ORDER_ONLINE_CONFIG.urlPlaceholder);
-            }}
+            href={ORDER_ONLINE_CONFIG.url}
+            target="_blank"
+            rel="noopener noreferrer"
             className="footer-compact-btn footer-btn-gold"
           >
             <span>ORDER ONLINE</span>

@@ -193,11 +193,9 @@ export const Gallery: React.FC = () => {
             EXPLORE MENU &rarr;
           </a>
           <a
-            href="#order"
-            onClick={(e) => {
-              e.preventDefault();
-              alert(ORDER_ONLINE_CONFIG.urlPlaceholder);
-            }}
+            href={ORDER_ONLINE_CONFIG.url}
+            target="_blank"
+            rel="noopener noreferrer"
             className="gallery-cta-secondary"
           >
             ORDER ONLINE &rarr;
