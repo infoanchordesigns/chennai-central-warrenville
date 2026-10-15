@@ -152,7 +152,7 @@ const MenuSearchAndNav: React.FC<MenuSearchAndNavProps> = ({
         </div>
 
         {isSearching && (
-          <div className="cc-menu-search-feedback">
+          <div className="cc-menu-search-feedback" role="status" aria-live="polite">
             <p className="cc-menu-search-count font-body">
               {matchCount === 0
                 ? `No dishes found matching "${searchQuery}"`
@@ -895,6 +895,11 @@ export const Menu: React.FC = () => {
                 url: 'https://mychennaicentral.com/menu',
                 inLanguage: 'en-US',
                 mainEntityOfPage: 'https://mychennaicentral.com/menu',
+                provider: {
+                  '@type': 'Restaurant',
+                  '@id': 'https://mychennaicentral.com/#warrenville',
+                  name: 'Chennai Central Warrenville',
+                },
               },
             ],
           }),
@@ -925,7 +930,7 @@ export const Menu: React.FC = () => {
           onCloseMobile={() => setIsMobileFilterOpen(false)}
         />
 
-        <main className="cc-menu-content-area" id="menu-content">
+        <main className="cc-menu-content-area" id="main-content" tabIndex={-1}>
           {totalMatchCount === 0 ? (
             <div className="cc-menu-empty-state">
               <span className="cc-menu-empty-icon" aria-hidden="true">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { FullscreenMenu } from './FullscreenMenu';
@@ -10,6 +10,7 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isNavHidden, setIsNavHidden] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuTriggerRef = useRef<HTMLButtonElement | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -57,6 +58,10 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       <header
         className={`header-floating-bar ${isScrolled ? 'header-scrolled' : ''} ${
           isMenuOpen ? 'is-menu-open' : ''
@@ -89,6 +94,7 @@ export const Navbar: React.FC = () => {
             </a>
 
             <button
+              ref={menuTriggerRef}
               onClick={toggleMenu}
               className="menu-trigger-compact"
               aria-expanded={isMenuOpen}
@@ -135,6 +141,7 @@ export const Navbar: React.FC = () => {
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
         currentPath={location.pathname}
+        triggerRef={menuTriggerRef}
       />
     </>
   );

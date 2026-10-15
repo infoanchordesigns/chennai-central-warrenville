@@ -16,3 +16,6 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://mychennaicentral.com/sitemap.xml
+# Supplementary Machine-Readable Catalogs
+# LLM Manifest: https://mychennaicentral.com/llms.txt
+# AI Catalog: https://mychennaicentral.com/ai-catalog.json

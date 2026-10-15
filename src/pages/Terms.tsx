@@ -13,9 +13,10 @@ export const Terms: React.FC = () => {
   });
 
   return (
-    <main className="page-legal-foundation">
+    <>
       <Navbar />
-      <section className="legal-content-container">
+      <main id="main-content" className="page-legal-foundation" tabIndex={-1}>
+        <section className="legal-content-container">
         <header className="legal-header">
           <h1 className="legal-title">Terms of Service</h1>
           <p className="legal-last-updated">Last Updated: October 2026</p>
@@ -224,7 +225,8 @@ export const Terms: React.FC = () => {
           </div>
         </article>
       </section>
+      </main>
       <Footer />
-    </main>
+    </>
   );
 };

@@ -18,16 +18,18 @@ export const Home: React.FC = () => {
   });
 
   return (
-    <main className="page-home-foundation">
+    <>
       <Navbar />
-      <Hero />
-      <About />
-      <SignatureDishes />
-      <Gallery />
-      <Testimonials />
-      <Visit />
+      <main id="main-content" className="page-home-foundation" tabIndex={-1}>
+        <Hero />
+        <About />
+        <SignatureDishes />
+        <Gallery />
+        <Testimonials />
+        <Visit />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 };
 

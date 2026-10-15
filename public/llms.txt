@@ -1,31 +1,36 @@
 # Chennai Central Warrenville
 
-> Authentic South Indian Cuisine in Warrenville, Illinois
+> Authentic South Indian Cuisine in Warrenville, Illinois. Dum Biryani, Masala Dosa, Chettinad specialties, and fine South Indian dining.
 
 ## Overview
-Chennai Central Warrenville is a premier South Indian restaurant located at 28331 Dodge Dr, Warrenville, IL 60555. The menu features traditional South Indian specialties including Dum Biryani, Masala Dosa, Chettinad curries, Chicken 65, Idly & Sambar, and Madras Filter Coffee.
+Chennai Central Warrenville is a premier South Indian restaurant located at 28331 Dodge Dr, Warrenville, IL 60555. The culinary program features traditional South Indian specialties including slow-cooked Dum Biryani, paper-thin Masala Dosa, robust Chettinad curries, Chicken 65, steamed Idly with Sambar, and authentic Madras Filter Coffee.
 
 ## Key Information
 - Address: 28331 Dodge Dr, Warrenville, IL 60555
 - Phone: (630) 393-6570
-- Cuisine: Authentic South Indian
-- Services: Lunch, Dinner, Dine-In, Takeout, Banquet & Catering
+- Cuisine: Authentic South Indian, Chettinad, Tandoori, Indo-Chinese
+- Dietary Options: Vegetarian, Non-Vegetarian, Halal
+- Services: Lunch, Dinner, Dine-In, Takeout, Online Ordering, Banquet & Catering
 - Price Range: $$
 
 ## Operating Hours (Warrenville)
-- Sunday: 11:30 AM – 9:00 PM
 - Monday – Thursday: 11:30 AM – 3:00 PM (Lunch) & 5:30 PM – 10:00 PM (Dinner)
-- Friday – Saturday: 11:30 AM – 1:00 AM
+- Friday – Saturday: 11:30 AM – 1:00 AM (Lunch, Dinner & Late Night)
+- Sunday: 11:30 AM – 9:00 PM (All-Day Dining)
 
-## Restaurant Branches
-- [Warrenville (Primary)](https://maps.app.goo.gl/jQEWagDBRoHXvKHp9): 28331 Dodge Dr, Warrenville, IL 60555 | Phone: (630) 393-6570 | Direct Google Maps directions
-- [Arlington Heights (Sister Location)](https://www.google.com/maps/search/?api=1&query=Chennai+Central+1035+S+Arlington+Heights+Rd+Arlington+Heights+IL+60005): 1035 S Arlington Heights Rd, Arlington Heights, IL 60005 | Phone: (847) 262-5997 | Google Maps search link
+## Machine-Readable Endpoints
+- [AI Catalog (JSON)](https://mychennaicentral.com/ai-catalog.json): Comprehensive structured JSON catalog with Schema.org Restaurant metadata, operating hours, locations, and menu category overview
+- [XML Sitemap](https://mychennaicentral.com/sitemap.xml): Search engine and crawler sitemap
+- [Robots Policy](https://mychennaicentral.com/robots.txt): Crawler permissions and index directives
 
 ## Official Links
-- [Homepage](https://mychennaicentral.com/): Official website for Chennai Central Warrenville with culinary storytelling, signature dishes, and patron reviews
-- [Menu](https://mychennaicentral.com/menu): Comprehensive South Indian menu featuring 243 items across 18 categories with dietary tags and search
-- [Online Ordering](https://toast.app/r/chennai-central-28331-dodge-drive/order/r-c51c73fb-9999-4baa-aab2-c229a7b33f28?diningOption=takeout&rwg_token=AE37R_hkg8YxM__cMqXQ3HuwVjXS-kV2GL_s1HyWx_ySizGKzzIkpUNZYQYQHQhlYnXoecz-3VJjce79-xUzoU0a_1vWKWqQtw%3D%3D&utm_medium=redirect): Direct online takeout ordering on Toast POS
-- [Instagram](https://www.instagram.com/chennai_central_warrenville/): Official Instagram profile for Chennai Central Warrenville
-- [Facebook (Warrenville)](https://www.facebook.com/chennaicentralwarrenville): Official Facebook page for Warrenville location
-- [Facebook (Arlington Heights)](https://www.facebook.com/p/Chennai-Central-Arlington-Heights-61579620741874/): Official Facebook page for Arlington Heights location
+- [Official Website](https://mychennaicentral.com/): Primary website with brand storytelling, signature dish highlights, and guest reviews
+- [Full Menu](https://mychennaicentral.com/menu): Digital interactive menu featuring 243 authentic South Indian dishes across 18 categories
+- [Online Ordering (Toast POS)](https://toast.app/r/chennai-central-28331-dodge-drive/order/r-c51c73fb-9999-4baa-aab2-c229a7b33f28?diningOption=takeout&rwg_token=AE37R_hkg8YxM__cMqXQ3HuwVjXS-kV2GL_s1HyWx_ySizGKzzIkpUNZYQYQHQhlYnXoecz-3VJjce79-xUzoU0a_1vWKWqQtw%3D%3D&utm_medium=redirect): Official online ordering portal for takeout and pickup
+- [Instagram (@chennai_central_warrenville)](https://www.instagram.com/chennai_central_warrenville/): Official Instagram profile featuring photos, specials, and restaurant updates
+- [Facebook (Warrenville)](https://www.facebook.com/chennaicentralwarrenville): Official Facebook page for the Warrenville, IL location
+- [Facebook (Arlington Heights)](https://www.facebook.com/p/Chennai-Central-Arlington-Heights-61579620741874/): Official Facebook page for the Arlington Heights sister location
 
+## Restaurant Locations
+- [Warrenville Location (Primary)](https://maps.app.goo.gl/jQEWagDBRoHXvKHp9): 28331 Dodge Dr, Warrenville, IL 60555 | Phone: (630) 393-6570 | Direct Google Maps location and directions
+- [Arlington Heights Location (Sister Branch)](https://www.google.com/maps/search/?api=1&query=Chennai+Central+1035+S+Arlington+Heights+Rd+Arlington+Heights+IL+60005): 1035 S Arlington Heights Rd, Arlington Heights, IL 60005 | Phone: (847) 262-5997 | Google Maps listing

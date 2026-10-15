@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 import gsap from 'gsap';
 import { useLenis } from '../../providers/LenisProvider';
 import { ORDER_ONLINE_CONFIG } from '../../data/navigation';
@@ -27,33 +27,68 @@ interface FullscreenMenuProps {
   isOpen: boolean;
   onClose: () => void;
   currentPath: string;
+  triggerRef?: React.RefObject<HTMLButtonElement | null>;
 }
 
 export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
   isOpen,
   onClose,
   currentPath,
+  triggerRef,
 }) => {
   const { stopScroll, startScroll } = useLenis();
   const overlayRef = useRef<HTMLDivElement | null>(null);
+  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
   const linksRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
-  // Scroll Lock & Escape Listener
+  // Scroll Lock, Focus Management, Escape Listener & Focus Trap
   useEffect(() => {
     if (!isOpen) return;
 
     // Lock background scrolling via Lenis provider
     stopScroll();
 
+    // Initial focus placement on close button
+    const focusTimer = setTimeout(() => {
+      if (closeBtnRef.current) {
+        closeBtnRef.current.focus();
+      } else if (linksRef.current[0]) {
+        linksRef.current[0].focus();
+      }
+    }, 50);
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         handleClose();
+      } else if (e.key === 'Tab') {
+        // Focus trap inside the modal dialog
+        if (!overlayRef.current) return;
+        const focusable = overlayRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+
+        const firstElement = focusable[0];
+        const lastElement = focusable[focusable.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
+      clearTimeout(focusTimer);
       window.removeEventListener('keydown', handleKeyDown);
       startScroll();
     };
@@ -94,6 +129,7 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
     if (prefersReducedMotion || !overlayRef.current) {
       startScroll();
       onClose();
+      triggerRef?.current?.focus();
       return;
     }
 
@@ -101,6 +137,7 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
       onComplete: () => {
         startScroll();
         onClose();
+        triggerRef?.current?.focus();
       },
     });
 
@@ -130,8 +167,19 @@ export const FullscreenMenu: React.FC<FullscreenMenuProps> = ({
       aria-modal="true"
       aria-label="Navigation Menu"
     >
-      {/* Overlay Header Spacer */}
-      <div className="overlay-header container" aria-hidden="true" />
+      {/* Overlay Header with Close Button */}
+      <div className="overlay-header container">
+        <button
+          ref={closeBtnRef}
+          type="button"
+          onClick={handleClose}
+          className="overlay-close-btn"
+          aria-label="Close navigation menu"
+        >
+          <span className="close-text">CLOSE</span>
+          <X size={16} aria-hidden="true" />
+        </button>
+      </div>
 
       {/* Overlay Main Nav Items */}
       <div className="overlay-body container">

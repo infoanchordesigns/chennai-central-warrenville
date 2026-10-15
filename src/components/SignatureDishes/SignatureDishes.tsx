@@ -200,6 +200,12 @@ export const SignatureDishes: React.FC = () => {
                 <div
                   key={dish.id}
                   onClick={() => setActiveIndex(index)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setActiveIndex(index);
+                    }
+                  }}
                   className={`arced-card ${isCurrent ? 'is-active' : ''}`}
                   style={
                     {
@@ -243,7 +249,7 @@ export const SignatureDishes: React.FC = () => {
         </div>
 
         {/* Active Dish Detail Card with Scroll Reveal & Stable Height */}
-        <div className="active-dish-info signature-reveal-item" key={activeDish.id}>
+        <div className="active-dish-info signature-reveal-item" key={activeDish.id} aria-live="polite">
           <h3 className="active-dish-name">{activeDish.name}</h3>
           <p className="active-dish-description">{activeDish.description}</p>
         </div>

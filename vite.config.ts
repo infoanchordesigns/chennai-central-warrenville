@@ -56,7 +56,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor-leaflet': ['leaflet'],
           'vendor-gsap': ['gsap', 'gsap/ScrollTrigger'],
         },
       },

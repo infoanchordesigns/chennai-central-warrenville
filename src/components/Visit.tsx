@@ -3,7 +3,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, Phone, ArrowUpRight, Instagram, Facebook, Clock, ChevronDown } from 'lucide-react';
 import type { Map as LeafletMap } from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 import { VISIT_DATA, ALL_LOCATIONS } from '../data/visitData';
 import { ORDER_ONLINE_CONFIG } from '../data/navigation';
 import './Visit.css';
@@ -28,7 +27,10 @@ export const Visit: React.FC = () => {
     let isCancelled = false;
     if (!mapContainerRef.current || leafletMapRef.current) return;
 
-    import('leaflet').then((leafletModule) => {
+    Promise.all([
+      import('leaflet'),
+      import('leaflet/dist/leaflet.css'),
+    ]).then(([leafletModule]) => {
       if (isCancelled || !mapContainerRef.current || leafletMapRef.current) return;
       const L = leafletModule.default || leafletModule;
 
@@ -85,6 +87,8 @@ export const Visit: React.FC = () => {
       L.marker([WARRENVILLE_LAT, WARRENVILLE_LNG], {
         icon: customIcon,
         interactive: false,
+        keyboard: false,
+        title: 'Chennai Central Warrenville',
       }).addTo(map);
     }).catch((error) => {
       console.warn('Unable to load interactive map:', error);

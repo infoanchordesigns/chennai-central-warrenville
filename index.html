@@ -18,6 +18,12 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://mychennaicentral.com/" />
 
+  <!-- Critical LCP Hero Image Preload (Responsive) -->
+  <link rel="preload" as="image" href="/src/assets/images/hero/hero-mobile.webp"
+    media="(orientation: portrait), (max-width: 640px)" fetchpriority="high" type="image/webp" />
+  <link rel="preload" as="image" href="/src/assets/images/hero/hero-desktop.webp"
+    media="(min-width: 641px) and (orientation: landscape)" fetchpriority="high" type="image/webp" />
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="restaurant" />
   <meta property="og:title" content="Chennai Central Warrenville | South Indian Restaurant" />
@@ -69,7 +75,15 @@
           "image": "https://mychennaicentral.com/restaurant-ambience.webp",
           "telephone": "(630) 393-6570",
           "priceRange": "$$",
-          "servesCuisine": "South Indian",
+          "servesCuisine": [
+            "South Indian",
+            "Chettinad",
+            "Biryani",
+            "Tandoori",
+            "Indo-Chinese"
+          ],
+          "currenciesAccepted": "USD",
+          "paymentAccepted": "Cash, Credit Card",
           "hasMenu": "https://mychennaicentral.com/menu",
           "menu": "https://mychennaicentral.com/menu",
           "address": {
@@ -86,6 +100,19 @@
             "longitude": -88.1768
           },
           "hasMap": "https://maps.app.goo.gl/jQEWagDBRoHXvKHp9",
+          "potentialAction": {
+            "@type": "OrderAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://toast.app/r/chennai-central-28331-dodge-drive/order/r-c51c73fb-9999-4baa-aab2-c229a7b33f28?diningOption=takeout&rwg_token=AE37R_hkg8YxM__cMqXQ3HuwVjXS-kV2GL_s1HyWx_ySizGKzzIkpUNZYQYQHQhlYnXoecz-3VJjce79-xUzoU0a_1vWKWqQtw%3D%3D&utm_medium=redirect",
+              "inLanguage": "en-US",
+              "actionPlatform": [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform"
+              ]
+            },
+            "deliveryMethod": "http://purl.org/goodrelations/v1#DeliveryModePickUp"
+          },
           "openingHoursSpecification": [
             {
               "@type": "OpeningHoursSpecification",
@@ -124,7 +151,13 @@
           "description": "Sister location of Chennai Central, serving authentic South Indian cuisine in Arlington Heights, IL.",
           "telephone": "(847) 262-5997",
           "priceRange": "$$",
-          "servesCuisine": "South Indian",
+          "servesCuisine": [
+            "South Indian",
+            "Chettinad",
+            "Biryani"
+          ],
+          "currenciesAccepted": "USD",
+          "paymentAccepted": "Cash, Credit Card",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "1035 S Arlington Heights Rd",
