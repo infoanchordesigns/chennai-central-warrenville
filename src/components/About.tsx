@@ -3,6 +3,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ourStory1Img from '../assets/images/our-story/our-story-1.webp';
 import ourStory2Img from '../assets/images/our-story/our-story-2.webp';
+import ourStory1SmImg from '../assets/images/our-story/our-story-1-sm.webp';
+import ourStory2SmImg from '../assets/images/our-story/our-story-2-sm.webp';
 import './About.css';
 
 export const About: React.FC = () => {
@@ -30,8 +32,7 @@ export const About: React.FC = () => {
                 start: 'top 88%',
                 end: 'top 48%',
                 scrub: 0.5,
-                invalidateOnRefresh: true,
-              },
+                },
             }
           );
         });
@@ -52,8 +53,7 @@ export const About: React.FC = () => {
                 start: 'top 88%',
                 end: 'top 45%',
                 scrub: 0.6,
-                invalidateOnRefresh: true,
-              },
+                },
             }
           );
         });
@@ -83,15 +83,23 @@ export const About: React.FC = () => {
         {/* 3. FIRST IMAGE MOMENT */}
         <figure className="about-image-wrapper about-image-item img-offset-left">
           <div className="about-visual-card">
-            <img
-              src={ourStory1Img}
-              alt="Chennai Central restaurant interior"
-              className="about-card-img"
-              loading="lazy"
-              decoding="async"
-              width="1000"
-              height="622"
-            />
+            <picture>
+              <source
+                media="(max-width: 640px)"
+                srcSet={ourStory1SmImg}
+                width="500"
+                height="311"
+              />
+              <img
+                src={ourStory1Img}
+                alt="Chennai Central restaurant interior"
+                className="about-card-img"
+                loading="lazy"
+                decoding="async"
+                width="1000"
+                height="622"
+              />
+            </picture>
           </div>
           <figcaption className="about-image-caption">
             <span className="caption-label">FLAVORS ROOTED IN SOUTH INDIA</span>
@@ -108,15 +116,23 @@ export const About: React.FC = () => {
         {/* 5. SECOND IMAGE MOMENT */}
         <figure className="about-image-wrapper about-image-item img-offset-right">
           <div className="about-visual-card card-variant-two">
-            <img
-              src={ourStory2Img}
-              alt="Chennai Central restaurant dining interior"
-              className="about-card-img"
-              loading="lazy"
-              decoding="async"
-              width="1000"
-              height="623"
-            />
+            <picture>
+              <source
+                media="(max-width: 640px)"
+                srcSet={ourStory2SmImg}
+                width="500"
+                height="312"
+              />
+              <img
+                src={ourStory2Img}
+                alt="Chennai Central restaurant dining interior"
+                className="about-card-img"
+                loading="lazy"
+                decoding="async"
+                width="1000"
+                height="623"
+              />
+            </picture>
           </div>
           <figcaption className="about-image-caption">
             <span className="caption-label">MADE FOR THE TABLE</span>

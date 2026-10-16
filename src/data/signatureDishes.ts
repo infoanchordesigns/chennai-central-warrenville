@@ -1,6 +1,7 @@
 import { SignatureDish } from '../types/signatureDish';
 
 import chickenBiryaniImg from '../assets/images/signature/chicken-biryani.webp';
+import chickenBiryaniSmImg from '../assets/images/signature/chicken-biryani-sm.webp';
 import masalaDosaImg from '../assets/images/signature/masala-dosa.webp';
 import gheeRoastDosaImg from '../assets/images/signature/ghee-roast-dosa.webp';
 import chickenTikkaImg from '../assets/images/signature/chicken-tikka.webp';
@@ -15,6 +16,7 @@ export const SIGNATURE_DISHES: SignatureDish[] = [
     name: 'Chennai Street Style Bhai Chicken Biryani',
     description: "Aromatic, long-grain biryani inspired by Chennai's beloved bhai-style biryani, layered with tender chicken, fragrant spices and beautifully seasoned rice.",
     image: chickenBiryaniImg,
+    imageSm: chickenBiryaniSmImg,
     alt: 'Chennai street style bhai chicken biryani',
   },
   {

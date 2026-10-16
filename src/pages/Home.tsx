@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
-import { SignatureDishes } from '../components/SignatureDishes';
 import { About } from '../components/About';
-import { Gallery } from '../components/Gallery';
-import { Testimonials } from '../components/Testimonials';
-import { Visit } from '../components/Visit';
-import { Footer } from '../components/Footer';
-
 import { usePageMeta } from '../hooks/usePageMeta';
+
+// Below-the-fold components code-split to eliminate render-blocking CSS and initial reflows
+const SignatureDishes = lazy(() => import('../components/SignatureDishes').then(m => ({ default: m.SignatureDishes })));
+const Gallery = lazy(() => import('../components/Gallery').then(m => ({ default: m.Gallery })));
+const Testimonials = lazy(() => import('../components/Testimonials').then(m => ({ default: m.Testimonials })));
+const Visit = lazy(() => import('../components/Visit').then(m => ({ default: m.Visit })));
+const Footer = lazy(() => import('../components/Footer').then(m => ({ default: m.Footer })));
 
 export const Home: React.FC = () => {
   usePageMeta({
@@ -23,13 +24,16 @@ export const Home: React.FC = () => {
       <main id="main-content" className="page-home-foundation" tabIndex={-1}>
         <Hero />
         <About />
-        <SignatureDishes />
-        <Gallery />
-        <Testimonials />
-        <Visit />
+        <Suspense fallback={null}>
+          <SignatureDishes />
+          <Gallery />
+          <Testimonials />
+          <Visit />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </>
   );
 };
-

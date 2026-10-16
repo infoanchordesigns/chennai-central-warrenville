@@ -3,6 +3,7 @@ export interface SignatureDish {
   name: string;
   description: string;
   image: string;
+  imageSm?: string;
   alt: string;
 }
 

@@ -22,80 +22,108 @@ export const Visit: React.FC = () => {
     VISIT_DATA.hoursOfOperation.find((item) => item.dayIndex === currentDayIndex) ||
     VISIT_DATA.hoursOfOperation[0];
 
-  // Leaflet Custom Muted Map Initialization (Deferred Dynamic Import)
+  // Leaflet Custom Muted Map Initialization (Deferred via IntersectionObserver)
   useEffect(() => {
     let isCancelled = false;
-    if (!mapContainerRef.current || leafletMapRef.current) return;
+    const container = mapContainerRef.current;
+    if (!container) return;
 
-    Promise.all([
-      import('leaflet'),
-      import('leaflet/dist/leaflet.css'),
-    ]).then(([leafletModule]) => {
-      if (isCancelled || !mapContainerRef.current || leafletMapRef.current) return;
-      const L = leafletModule.default || leafletModule;
+    let observer: IntersectionObserver | null = null;
 
-      // Initialize Leaflet map instance centered at Warrenville, IL
-      const map = L.map(mapContainerRef.current, {
-        center: [WARRENVILLE_LAT, WARRENVILLE_LNG],
-        zoom: 13.8,
-        zoomControl: false,
-        scrollWheelZoom: false,
-        doubleClickZoom: false,
-        dragging: false,
-        touchZoom: false,
-        boxZoom: false,
-        keyboard: false,
-        attributionControl: false,
-      });
+    const initMap = () => {
+      if (isCancelled || leafletMapRef.current || !mapContainerRef.current) return;
 
-      leafletMapRef.current = map;
+      Promise.all([
+        import('leaflet'),
+        import('leaflet/dist/leaflet.css'),
+      ]).then(([leafletModule]) => {
+        if (isCancelled || !mapContainerRef.current || leafletMapRef.current) return;
+        const L = leafletModule.default || leafletModule;
 
-      // Esri World Light Gray Base (Muted, free, public, zero API key required, no watermarks)
-      L.tileLayer(
-        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
-        {
-          maxZoom: 16,
-        }
-      ).addTo(map);
+        // Initialize Leaflet map instance centered at Warrenville, IL
+        const map = L.map(mapContainerRef.current, {
+          center: [WARRENVILLE_LAT, WARRENVILLE_LNG],
+          zoom: 13.8,
+          zoomControl: false,
+          scrollWheelZoom: false,
+          doubleClickZoom: false,
+          dragging: false,
+          touchZoom: false,
+          boxZoom: false,
+          keyboard: false,
+          attributionControl: false,
+        });
 
-      // Esri World Light Gray Reference Labels
-      L.tileLayer(
-        'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
-        {
-          maxZoom: 16,
-        }
-      ).addTo(map);
+        leafletMapRef.current = map;
 
-      // Custom Dark Brown + Gold Location Marker (Matches Arlington reference pin)
-      const customPinHtml = `
-        <div class="custom-map-pin-container" aria-hidden="true">
-          <div class="pin-halo-pulse"></div>
-          <div class="pin-marker-head">
-            <div class="pin-inner-gold-dot"></div>
+        // Esri World Light Gray Base (Muted, free, public, zero API key required, no watermarks)
+        L.tileLayer(
+          'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+          {
+            maxZoom: 16,
+          }
+        ).addTo(map);
+
+        // Esri World Light Gray Reference Labels
+        L.tileLayer(
+          'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',
+          {
+            maxZoom: 16,
+          }
+        ).addTo(map);
+
+        // Custom Dark Brown + Gold Location Marker (Matches Arlington reference pin)
+        const customPinHtml = `
+          <div class="custom-map-pin-container" aria-hidden="true">
+            <div class="pin-halo-pulse"></div>
+            <div class="pin-marker-head">
+              <div class="pin-inner-gold-dot"></div>
+            </div>
+            <div class="pin-title-tag">CHENNAI CENTRAL</div>
           </div>
-          <div class="pin-title-tag">CHENNAI CENTRAL</div>
-        </div>
-      `;
+        `;
 
-      const customIcon = L.divIcon({
-        html: customPinHtml,
-        className: 'custom-leaflet-marker',
-        iconSize: [120, 54],
-        iconAnchor: [60, 27],
+        const customIcon = L.divIcon({
+          html: customPinHtml,
+          className: 'custom-leaflet-marker',
+          iconSize: [120, 54],
+          iconAnchor: [60, 27],
+        });
+
+        L.marker([WARRENVILLE_LAT, WARRENVILLE_LNG], {
+          icon: customIcon,
+          interactive: false,
+          keyboard: false,
+          title: 'Chennai Central Warrenville',
+        }).addTo(map);
+      }).catch((error) => {
+        console.warn('Unable to load interactive map:', error);
       });
+    };
 
-      L.marker([WARRENVILLE_LAT, WARRENVILLE_LNG], {
-        icon: customIcon,
-        interactive: false,
-        keyboard: false,
-        title: 'Chennai Central Warrenville',
-      }).addTo(map);
-    }).catch((error) => {
-      console.warn('Unable to load interactive map:', error);
-    });
+    if ('IntersectionObserver' in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            initMap();
+            if (observer) {
+              observer.disconnect();
+              observer = null;
+            }
+          }
+        },
+        { rootMargin: '300px' }
+      );
+      observer.observe(container);
+    } else {
+      initMap();
+    }
 
     return () => {
       isCancelled = true;
+      if (observer) {
+        observer.disconnect();
+      }
       if (leafletMapRef.current) {
         leafletMapRef.current.remove();
         leafletMapRef.current = null;

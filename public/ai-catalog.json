@@ -1,7 +1,9 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "@context": "https://schema.org",
+  "@type": "DataCatalog",
+  "name": "Chennai Central Warrenville AI & Machine-Readable Catalog",
   "catalogVersion": "1.0.0",
-  "lastUpdated": "2026-10-14",
+  "lastUpdated": "2026-10-15",
   "entity": {
     "@context": "https://schema.org",
     "@type": "Restaurant",
@@ -58,28 +60,43 @@
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
         "opens": "11:30",
         "closes": "15:00",
         "description": "Lunch"
       },
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
         "opens": "17:30",
         "closes": "22:00",
         "description": "Dinner"
       },
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Friday", "Saturday"],
+        "dayOfWeek": [
+          "Friday",
+          "Saturday"
+        ],
         "opens": "11:30",
         "closes": "01:00",
         "description": "Lunch, Dinner & Late Night"
       },
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Sunday"],
+        "dayOfWeek": [
+          "Sunday"
+        ],
         "opens": "11:30",
         "closes": "21:00",
         "description": "All-Day Dining"

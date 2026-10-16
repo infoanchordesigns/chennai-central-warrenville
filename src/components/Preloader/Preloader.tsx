@@ -57,7 +57,7 @@ export const Preloader: React.FC = () => {
           gsap.to(containerRef.current, {
             opacity: 0,
             scale: 0.97,
-            duration: 0.45,
+            duration: 0.35,
             ease: 'power2.inOut',
             onComplete: () => {
               startScroll();
@@ -67,7 +67,7 @@ export const Preloader: React.FC = () => {
         },
       });
 
-      // Phase 1: Unmask & reveal exact SVG logo from center outward (0.15s -> 2.2s)
+      // Phase 1: Unmask & reveal exact SVG logo from center outward (0.05s -> 0.8s)
       if (logoImageRef.current) {
         tl.to(
           logoImageRef.current,
@@ -75,15 +75,15 @@ export const Preloader: React.FC = () => {
             opacity: 1,
             scale: 1,
             clipPath: 'circle(85% at 50% 50%)',
-            duration: 2.1,
+            duration: 0.75,
             ease: 'power2.out',
           },
-          0.15
+          0.05
         );
       }
 
-      // Phase 2: Hold complete exact SVG logo (2.25s -> 2.65s)
-      tl.to({}, { duration: 0.4 });
+      // Phase 2: Hold complete exact SVG logo (0.8s -> 1.0s)
+      tl.to({}, { duration: 0.2 });
     }, containerRef);
 
     return () => {

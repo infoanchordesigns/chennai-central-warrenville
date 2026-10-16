@@ -66,12 +66,10 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
 
   const stopScroll = () => {
     lenisRef.current?.stop();
-    document.body.style.overflow = 'hidden';
   };
 
   const startScroll = () => {
     lenisRef.current?.start();
-    document.body.style.overflow = '';
   };
 
   return (

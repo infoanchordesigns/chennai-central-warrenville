@@ -15,8 +15,18 @@ export const MediaStage: React.FC = () => {
   return (
     <div className="hero-media-wrapper">
       <picture className="hero-media-picture">
-        <source media="(orientation: portrait)" srcSet={heroMobileImg} />
-        <source media="(max-width: 640px)" srcSet={heroMobileImg} />
+        <source
+          media="(orientation: portrait)"
+          srcSet={heroMobileImg}
+          width="720"
+          height="837"
+        />
+        <source
+          media="(max-width: 640px)"
+          srcSet={heroMobileImg}
+          width="720"
+          height="837"
+        />
         <img
           src={heroDesktopImg}
           alt="Chennai Central South Indian restaurant in Warrenville, Illinois"
@@ -25,7 +35,7 @@ export const MediaStage: React.FC = () => {
           decoding="async"
           fetchPriority="high"
           width="1920"
-          height="1080"
+          height="1196"
         />
       </picture>
     </div>

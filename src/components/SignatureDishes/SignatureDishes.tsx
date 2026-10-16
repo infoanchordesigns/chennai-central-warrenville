@@ -38,8 +38,7 @@ export const SignatureDishes: React.FC = () => {
                 start: 'top 88%',
                 end: 'top 55%',
                 scrub: 0.5,
-                invalidateOnRefresh: true,
-              },
+                },
             }
           );
         });
@@ -219,15 +218,35 @@ export const SignatureDishes: React.FC = () => {
                   aria-current={isCurrent ? 'true' : 'false'}
                 >
                   <div className="dish-media-card">
-                    <img
-                      src={dish.image}
-                      alt={dish.alt}
-                      className="dish-media-element"
-                      loading={isCurrent || index === 0 ? 'eager' : 'lazy'}
-                      decoding="async"
-                      width="600"
-                      height="600"
-                    />
+                    {dish.imageSm ? (
+                      <picture>
+                        <source
+                          media="(max-width: 640px)"
+                          srcSet={dish.imageSm}
+                          width="360"
+                          height="270"
+                        />
+                        <img
+                          src={dish.image}
+                          alt={dish.alt}
+                          className="dish-media-element"
+                          loading={isCurrent || index === 0 ? 'eager' : 'lazy'}
+                          decoding="async"
+                          width="640"
+                          height="480"
+                        />
+                      </picture>
+                    ) : (
+                      <img
+                        src={dish.image}
+                        alt={dish.alt}
+                        className="dish-media-element"
+                        loading={isCurrent || index === 0 ? 'eager' : 'lazy'}
+                        decoding="async"
+                        width="640"
+                        height="480"
+                      />
+                    )}
                   </div>
                 </div>
               );
